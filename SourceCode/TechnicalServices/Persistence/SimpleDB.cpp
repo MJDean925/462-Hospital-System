@@ -28,7 +28,7 @@ namespace TechnicalServices::Persistence
     {
         for (const auto & user : _users) if (user.userName == name) return {user.userName, user.passPhrase, user.roles};
         std::string message = __func__;
-        message += "attemt to find user \"" + name + "\" failed";
+        message += " attemt to find user \"" + name + "\" failed";
         _logger <<message;
         throw PersistenceHandler::NoSuchUser(message);
     }
