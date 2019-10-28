@@ -14,7 +14,7 @@ namespace Domain::Records{
             VisitRecords();
 
             //Operations
-            //None yet
+            void createNewRecord();
 
             //Destructor
             ~VisitRecords() noexcept override;

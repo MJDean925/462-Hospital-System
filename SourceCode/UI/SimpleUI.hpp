@@ -30,7 +30,6 @@ namespace UI
             std::unique_ptr<Domain::Records::RecordHandler> _appointmentRecords;
             std::unique_ptr<Domain::AccountManagement::AccountManagementHandler> _accounts;
             std::unique_ptr<TechnicalServices::Logging::LoggerHandler> _loggerPtr;
-            std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _persistentData;
             TechnicalServices::Logging::LoggerHandler & _logger = *_loggerPtr;
     };
 }

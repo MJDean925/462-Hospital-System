@@ -18,5 +18,8 @@ namespace Domain::Records{
     }
 
     //Operations
-    //None yet
+    void VisitRecords::createNewRecord(){
+        TechnicalServices::Persistence::VisitRecords v = {};
+        _persistentData->addRecord(v);
+    }
 }

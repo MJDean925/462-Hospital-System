@@ -20,7 +20,6 @@ namespace UI
 {
     SimpleUI::SimpleUI()
     : _loggerPtr (std::make_unique<TechnicalServices::Logging::SimpleLogger>()),
-    _persistentData (std::make_unique<TechnicalServices::Persistence::SimpleDB>()),
     _accounts(std::make_unique<Domain::AccountManagement::UserAccounts>()),
     _visitRecords(std::make_unique<Domain::Records::VisitRecords>()),
     _appointmentRecords(std::make_unique<Domain::Records::AppointmentRecords>())
@@ -36,6 +35,7 @@ namespace UI
     //Operations
     void SimpleUI::launch()
     {
+        /*
         //Test code to ensure sessions are created properly, for now they create own pData, delete that later
         std::cout << "Creating Doctor Session\n";
         std::unique_ptr<Domain::Sessions::SessionHandler> sessionControl = Domain::Sessions::SessionHandler::createSession("Doctor");
@@ -43,5 +43,25 @@ namespace UI
         std::vector<std::string> roles = sessionControl->getCommands();
         std::cout << roles[0] << " " << roles[1] << " " << roles[2] << "\n";
         std::cout << "Finished\n";
+        */
+       bool running = true;
+       std::string uName;
+       std::string pWord;
+       unsigned int selection;
+
+       do{
+           std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+           std::cout << "   Username:   ";
+           std::getline(std::cin, uName);
+           std::cout << "   Password:   ";
+           std::getline(std::cin, pWord);
+
+           if (_accounts->isAuthenticated({uName, pWord, ""})){
+               _logger << "Login successful for \"" + uName + "\"";
+               break;
+           }
+
+       }while(running);
+
     }
 }
