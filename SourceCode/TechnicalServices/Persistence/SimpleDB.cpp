@@ -12,7 +12,8 @@ namespace TechnicalServices::Persistence
     SimpleDB::SimpleDB()
     : _loggerPtr (std::make_unique<TechnicalServices::Logging::SimpleLogger>())
     {
-        
+        initializeData();
+        _logger << "Simple DB has been successfully initialized";
     }
 
     SimpleDB::~SimpleDB() noexcept
