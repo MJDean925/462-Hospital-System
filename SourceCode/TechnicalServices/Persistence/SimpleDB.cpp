@@ -12,17 +12,7 @@ namespace TechnicalServices::Persistence
     SimpleDB::SimpleDB()
     : _loggerPtr (std::make_unique<TechnicalServices::Logging::SimpleLogger>())
     {
-        UserCredentials tmp = {"DoctorAccount", "password", "Doctor"};
-        _users.push_back(tmp);
-        tmp = {"ReceptionistAccount", "password", "Receptionist"};
-        _users.push_back(tmp);
-        tmp = {"AnalystAccount", "password", "Analyst"};
-        _users.push_back(tmp);
-        tm inTime;
-        tm outTime;
-        VisitRecords t = {"Name", "Doctor", inTime, outTime, "Testimony", "Diagnosis", "Treatment", "Referral", "Prescription"};
-        _visitRecords.push_back(t);
-        _logger << "Simple DB has been successfully initialized";
+        
     }
 
     SimpleDB::~SimpleDB() noexcept
@@ -42,6 +32,22 @@ namespace TechnicalServices::Persistence
         message += " attemt to find user \"" + name + "\" failed";
         _logger <<message;
         throw PersistenceHandler::NoSuchUser(message);
+    }
+
+    void SimpleDB::initializeData() {
+        _users = { 
+            {"DoctorAccount", "password", "Doctor"},
+            {"ReceptionistAccount", "password", "Receptionist"},
+            {"AnalystAccount", "password", "Analyst"}
+        };
+
+        tm inTime;
+        tm outTime;
+
+        _visitRecords = {
+            {"Name", "Doctor", inTime, outTime, "Testimony", "Diagnosis", "Treatment", "Referral", "Prescription"}
+        };
+        _logger << "Simple DB has been successfully initialized";
     }
 
     void SimpleDB::addRecord(const VisitRecords & v){

@@ -29,6 +29,7 @@ namespace TechnicalServices::Persistence
             std::vector<VisitRecords> _visitRecords;
             std::vector<AppointmentRecords> _appRecords;
             std::vector<UserCredentials> _users;
+            void initializeData();
     };//Class SimpleDB
 
 
