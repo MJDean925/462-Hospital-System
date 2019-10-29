@@ -179,7 +179,7 @@ namespace UI
                                     for (unsigned int i = 0; i < entries.size(); i++){
                                         std::cout << i << " - " << appFields[i] << ": " << entries[i] << '\n';
                                     }
-                                    std::cout << entries.size() << " - Finished";
+                                    std::cout << entries.size() << " - Finished\n";
                                     std::cin >> selection;
                                 }while(selection > entries.size());
                                 if (selection == entries.size()){
@@ -196,7 +196,35 @@ namespace UI
                             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                             std::getline(std::cin, output);
 
-                            //Manipulate AppDate to put in tm struct format, given as MM/DD/YYYY 24h Time ie 14:30 or 02:20
+                            //Manipulate AppDate to put in tm struct format, given as MM/DD/YYYY HH:MM 24h format ie 14:30 or 02:20
+                            std::string dateAsString = entries[2];
+                            std::string tmp;
+                            //Month
+                            tmp = dateAsString[0];
+                            tmp = tmp + dateAsString[1];
+                            date.tm_mon = std::stoi(tmp) - 1;
+                            //Day
+                            tmp = dateAsString[3];
+                            tmp = tmp + dateAsString[4];
+                            date.tm_mday = std::stoi(tmp);
+                            //Year
+                            tmp = dateAsString[6];
+                            tmp = tmp + dateAsString[7];
+                            tmp = tmp + dateAsString[8];
+                            tmp = tmp + dateAsString[9];
+                            date.tm_year = std::stoi(tmp) - 1900;
+                            //Hour
+                            tmp = dateAsString[11];
+                            tmp = tmp + dateAsString[12];
+                            date.tm_hour = std::stoi(tmp);
+                            //Minute
+                            tmp = dateAsString[14];
+                            tmp = tmp + dateAsString[15];
+                            date.tm_min = std::stoi(tmp);
+                            //Seconds at 0
+                            date.tm_sec = 0;
+                            //Called to fill in the blanks
+                            mktime(&date);
 
                             _appointmentRecords->createNewAppointment(entries[0], entries[1], date, entries[3], output);
                         }
