@@ -9,7 +9,7 @@ namespace Domain::Records{
             RecordHandler(RecordHandler && original) = default;
 
             //Operations
-            //None yet
+            virtual void createNewRecord() = 0;
 
             //Destructor
             virtual ~RecordHandler() noexcept = 0;

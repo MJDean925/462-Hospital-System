@@ -44,22 +44,59 @@ namespace UI
         std::cout << roles[0] << " " << roles[1] << " " << roles[2] << "\n";
         std::cout << "Finished\n";
         */
-       bool running = true;
-       std::string uName;
-       std::string pWord;
-       unsigned int selection;
+        bool running = true;
+        bool loggedIn = false;
+        std::string uName;
+        std::string pWord;
+        std::string role;
+        std::vector<std::string> commands;
+        unsigned int selection;
+        std::string selectedCommand;
+        do{
+            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+ 
+            std::cout << "   Username:   ";
+            std::getline(std::cin, uName);
+            std::cout << "   Password:   ";
+            std::getline(std::cin, pWord);
 
-       do{
-           std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
-           std::cout << "   Username:   ";
-           std::getline(std::cin, uName);
-           std::cout << "   Password:   ";
-           std::getline(std::cin, pWord);
+            if (_accounts->isAuthenticated({uName, pWord, ""})){
+                _logger << "Login successful for \"" + uName + "\"";
+                loggedIn = true;
+                role = _accounts->getRole(uName);
+                std::unique_ptr<Domain::Sessions::SessionHandler> currentSession = Domain::Sessions::SessionHandler::createSession(role);
+                commands = currentSession->getCommands();
+                if (role == "Doctor"){
+                    do{
+                        for (unsigned int i = 0; i < commands.size(); i++){
+                        std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
+                        }
+                        std::cin >> selection;
+                        if(selection == 0){
 
-           if (_accounts->isAuthenticated({uName, pWord, ""})){
-               _logger << "Login successful for \"" + uName + "\"";
-               break;
-           }
+                        }
+                        else if(selection == 1){
+
+                        }
+                        else if(selection == 2){
+
+                        }
+                        else{
+                            std::cout << "Invalid option\n";
+                        }
+                    }while(loggedIn);
+                }
+                else if (role == "Receptionist"){
+
+                }
+                else if (role == "Analyst"){
+
+                }
+            }
+            else{
+                _logger << "Login failed for \"" + uName + "\"";
+            }
+           
 
        }while(running);
 

@@ -16,6 +16,7 @@ namespace Domain::AccountManagement{
 
             //Operations
             bool isAuthenticated (const UserCredentials & credentials) override;
+            std::string getRole(const std::string & name) override;
 
             //Destructor
             ~UserAccounts() noexcept override;

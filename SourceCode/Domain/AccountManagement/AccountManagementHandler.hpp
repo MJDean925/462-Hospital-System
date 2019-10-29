@@ -16,6 +16,7 @@ namespace Domain::AccountManagement{
 
             //Operations
             virtual bool isAuthenticated( const UserCredentials & credentials) = 0;
+            virtual std::string getRole(const std::string & name) = 0;
 
             //Destructor
             virtual ~AccountManagementHandler() noexcept = 0;

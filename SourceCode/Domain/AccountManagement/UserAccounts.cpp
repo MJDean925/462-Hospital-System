@@ -1,4 +1,5 @@
 #include <memory>
+#include <string>
 
 #include "Domain/AccountManagement/UserAccounts.hpp"
 
@@ -27,5 +28,10 @@ namespace Domain::AccountManagement{
         }
         catch (const TechnicalServices::Persistence::PersistenceHandler::NoSuchUser &) {}
         return false;
+    }
+
+    std::string UserAccounts::getRole(const std::string & name){
+        UserCredentials credentialsFromDB = _persistentData->findCredentialsByName(name);
+        return credentialsFromDB.role;
     }
 }
