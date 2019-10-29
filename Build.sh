@@ -22,6 +22,12 @@ for fileName in "${sourceFiles[@]}"; do
 done
 echo ""
 
+if [ "$1" == "--no-warnings" ]; then
+  DisableWarnings="-w"
+else
+  DisableWarnings=""
+fi
+
 
 #define options
 GccOptions="  -Wall -Wextra -pedantic        \
@@ -62,7 +68,7 @@ CommonOptions="-g3 -O0 -pthread -std=c++17 -I./ -DUSING_TOMS_SUGGESTIONS -D__fun
 
 
 
-GccCommand="g++ $GccOptions $CommonOptions"
+GccCommand="g++ $DisableWarnings $GccOptions $CommonOptions"
 echo $GccCommand
 g++ --version
 
