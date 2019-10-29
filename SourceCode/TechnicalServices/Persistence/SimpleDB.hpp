@@ -22,6 +22,8 @@ namespace TechnicalServices::Persistence
             void addAppointment(const AppointmentRecords & a);
             void debugVisits();
             void debugApp();
+            std::vector<VisitRecords> getRecentVisitRecords(int size);
+            std::vector<VisitRecords> getAllVisitRecords();
 
             //Destructor
             ~SimpleDB() noexcept override;

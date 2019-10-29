@@ -3,6 +3,8 @@
 #include <vector>
 #include <string>
 
+#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
+
 namespace Domain::Records{
     class RecordHandler{
         public:
@@ -17,6 +19,7 @@ namespace Domain::Records{
             virtual void createNewRecord(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) {} 
             virtual std::vector<std::string> requestNewAppointment() {}
             virtual void createNewAppointment(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) {}
+            virtual std::vector<TechnicalServices::Persistence::VisitRecords> getRecords(int size) {};
 
             //Destructor
             virtual ~RecordHandler() noexcept = 0;

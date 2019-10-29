@@ -245,6 +245,7 @@ namespace UI
                 }
                 else if (role == "Analyst"){//Checks if the user is an analyst
                     do{//Loop the same user's options and decisions until logout or shutdown is called
+                        bool viewingTrends = false;
                         do{//Lists commands and makes sure in range
                             for (unsigned int i = 0; i < commands.size(); i++){
                                 std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
@@ -255,7 +256,27 @@ namespace UI
                         //If/Else if block for executing commands
                         if(selectedCommand == "View Trends"){
                             std::cout << "View Trends selected\n"; 
-                            //Add functionality
+                            viewingTrends = true;
+                            do {
+                                std::vector<std::string> trendCommands = {"View Recent Visits", "Diagnoses By Month", "Main Menu"};
+                                do {
+                                    for (unsigned int i = 0; i < trendCommands.size(); i++){
+                                        std::cout << std::setw(2) << i << " - " << trendCommands[i] << "\n";
+                                    }
+                                }while(selection >= trendCommands.size());
+                                selectedCommand = trendCommands[selection];
+
+                                if(selectedCommand == "View Recent Visits") {
+                                    auto records = _visitRecords->getRecords(15);
+                                    for(auto record : records) {
+                                        std::cout << record.patientName << " (" << record.doctorName << ") ";
+                                    }
+                                }
+
+                                if(selectedCommand == "Main Menu") {
+                                    viewingTrends = false;
+                                }
+                            }while(viewingTrends);
                         }
                         else if(selectedCommand == "Logout"){
                             std::cout << "Logout selected\n";

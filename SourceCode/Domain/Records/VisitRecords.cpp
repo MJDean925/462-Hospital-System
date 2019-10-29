@@ -34,4 +34,8 @@ namespace Domain::Records{
         _logger << "Visit record created successfully";
         //_persistentData->debugVisits();
     }
+
+    std::vector<TechnicalServices::Persistence::VisitRecords> VisitRecords::getRecords(int size) {
+        return _persistentData->getRecentVisitRecords(size);
+    }
 }

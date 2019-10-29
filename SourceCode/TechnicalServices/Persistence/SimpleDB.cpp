@@ -47,13 +47,15 @@ namespace TechnicalServices::Persistence
         tm inTime = *now;
         tm outTime = *now;
 
-        std::cout << "inTime initialized to " << inTime.tm_mon << " " << inTime.tm_mday << " " << inTime.tm_hour << " " << inTime.tm_min << " " << inTime.tm_sec;
-        std::cout << "outTime initialized to " << outTime.tm_mon << " " << outTime.tm_mday << " " << outTime.tm_hour << " " << outTime.tm_min << " " << outTime.tm_sec;
+        // tm testing
+        // std::cout << "inTime initialized to " << inTime.tm_mon << " " << inTime.tm_mday << " " << inTime.tm_hour << " " << inTime.tm_min << " " << inTime.tm_sec;
+        // std::cout << "outTime initialized to " << outTime.tm_mon << " " << outTime.tm_mday << " " << outTime.tm_hour << " " << outTime.tm_min << " " << outTime.tm_sec;
 
         _visitRecords = { 
             // Name, Doctor, inTime, outTime, Testimony, Diagnosis, Treatment, Referral, Prescription
             {"Alex Jones", "Dr. Brown", inTime, outTime, "Experiencing itching, burning sensation and redness in eyes. Vision deteriorating at times.", "Conjuctivitis", "Prescribed antibiotic eye drops", "", "Antibiotic eye drops"},
             {"Peter Parker", "Dr. Phillips", inTime, outTime, "Frequent bowel movements, cramping in the abdomen.", "Diarrhea", "Treatment", "", ""},
+            {"Walter White", "Dr. Belknap", inTime, outTime, "While working at the car wash, experienced intense coughing and then suddenly passed out.", "Lung Cancer", "Ongoing chemotherapy", "", ""},
             {"Linus Torvalds", "Dr. Adams", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
             {"Donald Trump", "Dr. Barry", inTime, outTime, "Testimony", "Conjuctivitis", "Prescribed antibiotic eye drops", "", ""},
             {"Barack Obama", "Dr. Chapman", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
@@ -65,8 +67,7 @@ namespace TechnicalServices::Persistence
             {"Mark Zuckerberg", "Dr. Brown", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
             {"Kanye West", "Dr. Phillips", inTime, outTime, "Testimony", "Conjuctivitis", "", "", ""},
             {"Dennis Ritchie", "Dr. Adams", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
-            {"Jon Snow", "Dr. Barry", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
-            {"Walter White", "Dr. Belknap", inTime, outTime, "While working at the car wash, experienced intense coughing and then suddenly passed out.", "Lung Cancer", "Ongoing chemotherapy", "", ""}
+            {"Jon Snow", "Dr. Barry", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""}
         };
 
         // edit dates
@@ -103,4 +104,16 @@ namespace TechnicalServices::Persistence
             std::cout << _appRecords[i].patientName << "\n " << asctime(&_appRecords[i].date);
         }
     }
+
+    std::vector<VisitRecords> SimpleDB::getRecentVisitRecords(int size) {
+        std::vector<VisitRecords> records = _visitRecords;
+        records.erase(records.end() - size - 1, records.end() - 1);
+        return records;
+    }
+
+    std::vector<VisitRecords> SimpleDB::getAllVisitRecords() {
+        return _visitRecords;
+    }
+
+
 }

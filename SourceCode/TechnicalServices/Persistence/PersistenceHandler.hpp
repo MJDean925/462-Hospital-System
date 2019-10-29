@@ -51,6 +51,8 @@ namespace TechnicalServices::Persistence
             virtual void addAppointment(const AppointmentRecords & a) = 0;
             virtual void debugVisits() = 0;
             virtual void debugApp() = 0;
+            virtual std::vector<VisitRecords> getRecentVisitRecords(int size) = 0;
+            virtual std::vector<VisitRecords> getAllVisitRecords() = 0;
 
             //Destructor
             virtual ~PersistenceHandler() noexcept = 0;
