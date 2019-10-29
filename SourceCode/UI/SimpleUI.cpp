@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <ctime>
 
 #include "Domain/Sessions/Session.hpp"
 #include "Domain/AccountManagement/UserAccounts.hpp"
@@ -80,7 +81,64 @@ namespace UI
                         //Set of if/else if for checking commands
                         if(selectedCommand == "Create Record"){
                             std::cout << "Create Record selected\n"; 
-                            //Add functionality
+                            //Figure out what goes in visit records
+                            std::vector<std::string> visitFields = _visitRecords->requestNewRecord();
+                            //Create and initialize all fields to empty
+                            /*std::string pName = "";
+                            std::string dName = "";
+                            std::string pTestimony = "";
+                            std::string diag = "";
+                            std::string treatment = "";
+                            std::string ref = "";
+                            std::string presc = "";*/
+                            std::vector<std::string> entries;
+                            std::string output;
+                            tm inDate;
+                            tm outDate;
+                            //Get inDate and set it
+                            time_t t;
+                            //t = current time
+                            time(&t);
+                            //inDate = t as struct tm, * and & needed due to pointer arguments and returns
+                            inDate = * localtime(&t);
+                            /*
+                            This was used to test time to string stuff
+                            std::string time_as_string = asctime(&inDate);
+                            std::cout << time_as_string << '\n';
+                            */
+
+                            //Initialize entries to empty, not including final 3 entries which don't require user input until end
+                            for (unsigned int i = 0; i < visitFields.size() - 3; i++){
+                                entries.push_back("");
+                            }
+                            //Loop to display and data filling until the file until command finished
+                            bool finished = false;
+                            do{
+                                do{
+                                    for (unsigned int i = 0; i < entries.size(); i++){
+                                        std::cout << i << " - " << visitFields[i] << ": " << entries[i] << '\n';
+                                    }
+                                    std::cout << entries.size() << " - Finished\n";
+                                    std::cin >> selection;
+                                }while(selection > entries.size());
+                                if (selection == entries.size()){
+                                    finished = true;
+                                }
+                                else{
+                                    std::cout << "Enter information: ";
+                                    std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+                                    std::getline(std::cin, entries[selection]);
+                                }
+                            }while(!finished);
+                            //Finished populating entries information
+                            //Get out time and create the record
+                            time(&t);
+                            outDate = * localtime(&t);
+                            std::cout << "Export record to file? (Y/N)\n";
+                            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+                            std::getline(std::cin,output);
+                            //Call method using data gathered
+                            _visitRecords->createNewRecord(entries[0], entries[1], entries[2], entries[3], entries[4], entries[5], entries[6], inDate, outDate, output);
                         }
                         else if(selectedCommand == "Logout"){
                             std::cout << "Logout selected\n";

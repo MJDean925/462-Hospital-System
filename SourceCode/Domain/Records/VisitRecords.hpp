@@ -1,6 +1,9 @@
 #pragma once
 
 #include <memory>
+#include <vector>
+#include <string>
+#include <ctime>
 
 #include "Domain/Records/RecordHandler.hpp"
 
@@ -14,7 +17,8 @@ namespace Domain::Records{
             VisitRecords();
 
             //Operations
-            void createNewRecord() override;
+            std::vector<std::string> requestNewRecord() override;
+            void createNewRecord(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) override;
 
             //Destructor
             ~VisitRecords() noexcept override;

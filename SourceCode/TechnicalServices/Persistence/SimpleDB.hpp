@@ -19,6 +19,7 @@ namespace TechnicalServices::Persistence
             std::vector<std::string> findRoles() override;
             UserCredentials findCredentialsByName(const std::string & name) override;
             void addRecord(const VisitRecords & v);
+            void debugVisits();
 
             //Destructor
             ~SimpleDB() noexcept override;
