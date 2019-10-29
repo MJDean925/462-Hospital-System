@@ -42,12 +42,31 @@ namespace TechnicalServices::Persistence
             {"AnalystAccount", "password", "Analyst"}
         };
 
-        tm inTime;
-        tm outTime;
+        std::time_t t = std::time(0);   // get time now
+        std::tm* now = std::localtime(&t);
+        tm inTime = *now;
+        tm outTime = *now;
 
-        _visitRecords = {
+        std::cout << "inTime initialized to " << inTime.tm_mon << " " << inTime.tm_mday << " " << inTime.tm_hour << " " << inTime.tm_min << " " << inTime.tm_sec;
+        std::cout << "outTime initialized to " << outTime.tm_mon << " " << outTime.tm_mday << " " << outTime.tm_hour << " " << outTime.tm_min << " " << outTime.tm_sec;
+
+        _visitRecords = { // 15
+            {"Name", "Doctor", inTime, outTime, "Testimony", "Diagnosis", "Treatment", "Referral", "Prescription"},
             {"Name", "Doctor", inTime, outTime, "Testimony", "Diagnosis", "Treatment", "Referral", "Prescription"}
         };
+
+        // add dates
+        for(int i = 0; i < _visitRecords.size(); i++) {
+            int randomSeed = 145678;
+            tm newInTime = inTime;
+            tm newOutTime = outTime;
+            
+            newInTime.tm_mon = newOutTime.tm_mon = inTime.tm_mon - (i / 4) % 12;
+            newInTime.tm_mday = newOutTime.tm_mday = randomSeed / i % 28;
+            
+            _visitRecords[i].inDate = newInTime;
+            _visitRecords[i].outDate = newOutTime;
+        }
         _logger << "Simple DB has been successfully initialized";
     }
 
