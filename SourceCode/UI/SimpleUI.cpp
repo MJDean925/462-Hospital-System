@@ -59,22 +59,25 @@ namespace UI
             std::getline(std::cin, uName);
             std::cout << "   Password:   ";
             std::getline(std::cin, pWord);
-
+            //Ensures the user has an account
             if (_accounts->isAuthenticated({uName, pWord, ""})){
                 _logger << "Login successful for \"" + uName + "\"";
                 loggedIn = true;
                 role = _accounts->getRole(uName);
+                //Creates the session to find commands
                 std::unique_ptr<Domain::Sessions::SessionHandler> currentSession = Domain::Sessions::SessionHandler::createSession(role);
                 commands = currentSession->getCommands();
+                //Checks if user is a doctor
                 if (role == "Doctor"){
-                    do{
-                        do{
+                    do{//Loops the same user's options and decisions until logout or shutdown called
+                        do{ //Loops to print commands and to make sure commands are in range
                             for (unsigned int i = 0; i < commands.size(); i++){
                                 std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
                             }
                             std::cin >> selection;
                         }while(selection >= commands.size());
                         selectedCommand = commands[selection];
+                        //Set of if/else if for checking commands
                         if(selectedCommand == "Create Record"){
                             std::cout << "Create Record selected\n"; 
                             //Add functionality
@@ -94,15 +97,16 @@ namespace UI
                         }
                     }while(loggedIn);
                 }
-                else if (role == "Receptionist"){
-                    do{
-                        do{
+                else if (role == "Receptionist"){//Checks if user is a receptionist
+                    do{//Loop the same user's options and decisions until logout or shutdown is called
+                        do{//Lists commands and ensures in range
                             for (unsigned int i = 0; i < commands.size(); i++){
                                 std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
                             }
                             std::cin >> selection;
                         }while(selection >= commands.size());
                         selectedCommand = commands[selection];
+                        //If/Else if block for executing commands
                         if(selectedCommand == "Create Appointment"){
                             std::cout << "Create Appointment selected\n"; 
                             //Add functionality
@@ -122,15 +126,16 @@ namespace UI
                         }
                     }while(loggedIn);
                 }
-                else if (role == "Analyst"){
-                    do{
-                        do{
+                else if (role == "Analyst"){//Checks if the user is an analyst
+                    do{//Loop the same user's options and decisions until logout or shutdown is called
+                        do{//Lists commands and makes sure in range
                             for (unsigned int i = 0; i < commands.size(); i++){
                                 std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
                             }
                             std::cin >> selection;
                         }while(selection >= commands.size());
                         selectedCommand = commands[selection];
+                        //If/Else if block for executing commands
                         if(selectedCommand == "View Trends"){
                             std::cout << "View Trends selected\n"; 
                             //Add functionality
