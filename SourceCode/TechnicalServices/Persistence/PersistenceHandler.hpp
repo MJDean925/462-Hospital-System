@@ -48,7 +48,9 @@ namespace TechnicalServices::Persistence
             virtual std::vector<std::string> findRoles() = 0;
             virtual UserCredentials findCredentialsByName( const std::string & name) = 0;
             virtual void addRecord(const VisitRecords & v) = 0;
+            virtual void addAppointment(const AppointmentRecords & a) = 0;
             virtual void debugVisits() = 0;
+            virtual void debugApp() = 0;
 
             //Destructor
             virtual ~PersistenceHandler() noexcept = 0;

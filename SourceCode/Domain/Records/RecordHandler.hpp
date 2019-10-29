@@ -15,8 +15,8 @@ namespace Domain::Records{
             //Virtual function needs a default implementation otherwise would need to be defined in derived classes even if unused there
             virtual std::vector<std::string> requestNewRecord() {}
             virtual void createNewRecord(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) {} 
-            virtual void requestNewAppointment() {}
-            virtual void createNewAppointment() {}
+            virtual std::vector<std::string> requestNewAppointment() {}
+            virtual void createNewAppointment(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) {}
 
             //Destructor
             virtual ~RecordHandler() noexcept = 0;

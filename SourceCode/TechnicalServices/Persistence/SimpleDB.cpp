@@ -74,9 +74,19 @@ namespace TechnicalServices::Persistence
         _visitRecords.push_back(v);
     }
 
+    void SimpleDB::addAppointment(const AppointmentRecords & a){
+        _appRecords.push_back(a);
+    }
+
     void SimpleDB::debugVisits(){
         for (unsigned int i = 0; i < _visitRecords.size(); i++){
-            _logger << _visitRecords[i].patientName + " " + asctime(&_visitRecords[i].inDate) + " " + asctime(&_visitRecords[i].outDate);
+            std::cout << _visitRecords[i].patientName << "\n " << asctime(&_visitRecords[i].inDate) << " " << asctime(&_visitRecords[i].outDate);
+        }
+    }
+
+    void SimpleDB::debugVisits(){
+        for (unsigned int i = 0; i < _appRecords.size(); i++){
+            std::cout << _appRecords[i].patientName << "\n " << asctime(&_appRecords[i].date);
         }
     }
 }
