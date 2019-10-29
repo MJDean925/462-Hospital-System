@@ -32,6 +32,6 @@ namespace Domain::Records{
             //Code to print to a file
         }
         _logger << "Visit record created successfully";
-        //_persistentData->debugVisits();
+        _persistentData->debugVisits();
     }
 }

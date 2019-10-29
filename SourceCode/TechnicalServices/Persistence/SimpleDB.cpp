@@ -57,7 +57,7 @@ namespace TechnicalServices::Persistence
 
     void SimpleDB::debugVisits(){
         for (unsigned int i = 0; i < _visitRecords.size(); i++){
-            _logger << _visitRecords[i].patientName + " " + asctime(&_visitRecords[i].inDate) + " " + asctime(&_visitRecords[i].outDate);
+            std::cout << _visitRecords[i].patientName << "\n " << asctime(&_visitRecords[i].inDate) << " " << asctime(&_visitRecords[i].outDate);
         }
     }
 }
