@@ -50,18 +50,32 @@ namespace TechnicalServices::Persistence
         std::cout << "inTime initialized to " << inTime.tm_mon << " " << inTime.tm_mday << " " << inTime.tm_hour << " " << inTime.tm_min << " " << inTime.tm_sec;
         std::cout << "outTime initialized to " << outTime.tm_mon << " " << outTime.tm_mday << " " << outTime.tm_hour << " " << outTime.tm_min << " " << outTime.tm_sec;
 
-        _visitRecords = { // 15
-            {"Name", "Doctor", inTime, outTime, "Testimony", "Diagnosis", "Treatment", "Referral", "Prescription"},
-            {"Name", "Doctor", inTime, outTime, "Testimony", "Diagnosis", "Treatment", "Referral", "Prescription"}
+        _visitRecords = { 
+            // Name, Doctor, inTime, outTime, Testimony, Diagnosis, Treatment, Referral, Prescription
+            {"Alex Jones", "Dr. Brown", inTime, outTime, "Experiencing itching, burning sensation and redness in eyes. Vision deteriorating at times.", "Conjuctivitis", "Prescribed antibiotic eye drops", "", "Antibiotic eye drops"},
+            {"Peter Parker", "Dr. Phillips", inTime, outTime, "Frequent bowel movements, cramping in the abdomen.", "Diarrhea", "Treatment", "", ""},
+            {"Linus Torvalds", "Dr. Adams", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
+            {"Donald Trump", "Dr. Barry", inTime, outTime, "Testimony", "Conjuctivitis", "Prescribed antibiotic eye drops", "", ""},
+            {"Barack Obama", "Dr. Chapman", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
+            {"Alec Baldwin", "Dr. Brown", inTime, outTime, "Testimony", "Diarrhea", "Treatment", "", ""},
+            {"Taylor Swift", "Dr. Phillips", inTime, outTime, "Testimony", "Conjuctivitis", "", "", ""},
+            {"Ron Swanson", "Dr. Adams", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
+            {"Alex Jones", "Dr. Barry", inTime, outTime, "Hay fever", "Allergies", "Treatment", "", ""},
+            {"Anthony Fantano", "Dr. Chapman", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
+            {"Mark Zuckerberg", "Dr. Brown", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
+            {"Kanye West", "Dr. Phillips", inTime, outTime, "Testimony", "Conjuctivitis", "", "", ""},
+            {"Dennis Ritchie", "Dr. Adams", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
+            {"Jon Snow", "Dr. Barry", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
+            {"Walter White", "Dr. Belknap", inTime, outTime, "While working at the car wash, experienced intense coughing and then suddenly passed out.", "Lung Cancer", "Ongoing chemotherapy", "", ""}
         };
 
-        // add dates
+        // edit dates
         for(int i = 0; i < _visitRecords.size(); i++) {
             int randomSeed = 145678;
             tm newInTime = inTime;
             tm newOutTime = outTime;
             
-            newInTime.tm_mon = newOutTime.tm_mon = inTime.tm_mon - (i / 4) % 12;
+            newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - (i / 4)) % 12;
             newInTime.tm_mday = newOutTime.tm_mday = randomSeed / i % 28;
             
             _visitRecords[i].inDate = newInTime;
