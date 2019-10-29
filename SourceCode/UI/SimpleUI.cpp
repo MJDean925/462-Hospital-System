@@ -83,14 +83,7 @@ namespace UI
                             std::cout << "Create Record selected\n"; 
                             //Figure out what goes in visit records
                             std::vector<std::string> visitFields = _visitRecords->requestNewRecord();
-                            //Create and initialize all fields to empty
-                            /*std::string pName = "";
-                            std::string dName = "";
-                            std::string pTestimony = "";
-                            std::string diag = "";
-                            std::string treatment = "";
-                            std::string ref = "";
-                            std::string presc = "";*/
+                            //Vector for entries
                             std::vector<std::string> entries;
                             std::string output;
                             tm inDate;
@@ -169,6 +162,43 @@ namespace UI
                         if(selectedCommand == "Create Appointment"){
                             std::cout << "Create Appointment selected\n"; 
                             //Add functionality
+                            std::vector<std::string> appFields = _appointmentRecords->requestNewAppointment();
+                            std::vector<std::string> entries;
+                            std::string output;
+                            tm date;
+
+                            //initialize entries, only need 4, 5th is export option
+                            for (unsigned int i = 0; i < appFields.size() - 1; i++){
+                                entries.push_back("");
+                            }
+
+                            bool finished = false;
+
+                            do{
+                                do{
+                                    for (unsigned int i = 0; i < entries.size(); i++){
+                                        std::cout << i << " - " << appFields[i] << ": " << entries[i] << '\n';
+                                    }
+                                    std::cout << entries.size() << " - Finished";
+                                    std::cin >> selection;
+                                }while(selection > entries.size());
+                                if (selection == entries.size()){
+                                    finished = true;
+                                }
+                                else{
+                                    std::cout << "Enter information: ";
+                                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                                    std::getline(std::cin, entries[selection]);
+                                }
+                            }while(!finished);
+
+                            std::cout << "Export appointment to file? (Y/N)\n";
+                            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            std::getline(std::cin, output);
+
+                            //Manipulate AppDate to put in tm struct format, given as MM/DD/YYYY 24h Time ie 14:30 or 02:20
+
+                            _appointmentRecords->createNewAppointment(entries[0], entries[1], date, entries[3], output);
                         }
                         else if(selectedCommand == "Logout"){
                             std::cout << "Logout selected\n";
