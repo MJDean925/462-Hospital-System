@@ -14,7 +14,7 @@ namespace Domain::Records{
             AppointmentRecords();
 
             //Operations
-            void createNewRecord() override {}
+            //None yet
 
             //Destructor
             ~AppointmentRecords() noexcept override;

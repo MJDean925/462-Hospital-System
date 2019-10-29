@@ -9,7 +9,8 @@ namespace Domain::Records{
             RecordHandler(RecordHandler && original) = default;
 
             //Operations
-            virtual void createNewRecord() = 0;
+            //Virtual function needs a default implementation otherwise would need to be defined in derived classes even if unused there
+            virtual void createNewRecord() {} 
 
             //Destructor
             virtual ~RecordHandler() noexcept = 0;

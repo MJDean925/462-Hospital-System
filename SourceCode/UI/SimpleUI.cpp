@@ -52,9 +52,9 @@ namespace UI
         std::vector<std::string> commands;
         unsigned int selection;
         std::string selectedCommand;
+        std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+
         do{
-            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
- 
             std::cout << "   Username:   ";
             std::getline(std::cin, uName);
             std::cout << "   Password:   ";
@@ -68,18 +68,26 @@ namespace UI
                 commands = currentSession->getCommands();
                 if (role == "Doctor"){
                     do{
-                        for (unsigned int i = 0; i < commands.size(); i++){
-                        std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
+                        do{
+                            for (unsigned int i = 0; i < commands.size(); i++){
+                                std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
+                            }
+                            std::cin >> selection;
+                        }while(selection >= commands.size());
+                        selectedCommand = commands[selection];
+                        if(selectedCommand == "Create Record"){
+                            std::cout << "Create Record selected\n"; 
+                            //Add functionality
                         }
-                        std::cin >> selection;
-                        if(selection == 0){
-
+                        else if(selectedCommand == "Logout"){
+                            std::cout << "Logout selected\n";
+                            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+                            loggedIn = false;
                         }
-                        else if(selection == 1){
-
-                        }
-                        else if(selection == 2){
-
+                        else if(selectedCommand == "Shutdown"){
+                            std::cout << "Shutdown selected\n";
+                            loggedIn = false;
+                            running = false;
                         }
                         else{
                             std::cout << "Invalid option\n";
@@ -87,10 +95,60 @@ namespace UI
                     }while(loggedIn);
                 }
                 else if (role == "Receptionist"){
-
+                    do{
+                        do{
+                            for (unsigned int i = 0; i < commands.size(); i++){
+                                std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
+                            }
+                            std::cin >> selection;
+                        }while(selection >= commands.size());
+                        selectedCommand = commands[selection];
+                        if(selectedCommand == "Create Appointment"){
+                            std::cout << "Create Appointment selected\n"; 
+                            //Add functionality
+                        }
+                        else if(selectedCommand == "Logout"){
+                            std::cout << "Logout selected\n";
+                            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+                            loggedIn = false;
+                        }
+                        else if(selectedCommand == "Shutdown"){
+                            std::cout << "Shutdown selected\n";
+                            loggedIn = false;
+                            running = false;
+                        }
+                        else{
+                            std::cout << "Invalid option\n";
+                        }
+                    }while(loggedIn);
                 }
                 else if (role == "Analyst"){
-
+                    do{
+                        do{
+                            for (unsigned int i = 0; i < commands.size(); i++){
+                                std::cout << std::setw(2) << i << " - " << commands[i] << "\n";
+                            }
+                            std::cin >> selection;
+                        }while(selection >= commands.size());
+                        selectedCommand = commands[selection];
+                        if(selectedCommand == "View Trends"){
+                            std::cout << "View Trends selected\n"; 
+                            //Add functionality
+                        }
+                        else if(selectedCommand == "Logout"){
+                            std::cout << "Logout selected\n";
+                            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+                            loggedIn = false;
+                        }
+                        else if(selectedCommand == "Shutdown"){
+                            std::cout << "Shutdown selected\n";
+                            loggedIn = false;
+                            running = false;
+                        }
+                        else{
+                            std::cout << "Invalid option\n";
+                        }
+                    }while(loggedIn);
                 }
             }
             else{
