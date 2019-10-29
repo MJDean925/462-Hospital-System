@@ -96,11 +96,11 @@ namespace UI
                             tm inDate;
                             tm outDate;
                             //Get inDate and set it
-                            time_t in;
+                            time_t t;
                             //t = current time
-                            time(&in);
+                            time(&t);
                             //inDate = t as struct tm, * and & needed due to pointer arguments and returns
-                            inDate = * localtime(&in);
+                            inDate = * localtime(&t);
                             /*
                             This was used to test time to string stuff
                             std::string time_as_string = asctime(&inDate);
@@ -132,9 +132,8 @@ namespace UI
                             }while(!finished);
                             //Finished populating entries information
                             //Get out time and create the record
-                            time_t out;
-                            time(&out);
-                            outDate = * localtime(&out);
+                            time(&t);
+                            outDate = * localtime(&t);
 
                             std::cout << "Export record to file? (Y/N)\n";
                             std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
