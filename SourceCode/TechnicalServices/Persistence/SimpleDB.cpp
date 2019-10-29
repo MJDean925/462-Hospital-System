@@ -98,7 +98,7 @@ namespace TechnicalServices::Persistence
         }
     }
 
-    void SimpleDB::debugVisits(){
+    void SimpleDB::debugApp(){
         for (unsigned int i = 0; i < _appRecords.size(); i++){
             std::cout << _appRecords[i].patientName << "\n " << asctime(&_appRecords[i].date);
         }

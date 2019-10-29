@@ -20,7 +20,7 @@ namespace Domain::Records{
 
     //Operations
     std::vector<std::string> AppointmentRecords::requestNewAppointment(){
-        return {"Patient Name", "Doctor Name", "Appointment Time (MM/DD/YYYY 24h Time)", "Patient Testimony", "Export"};
+        return {"Patient Name", "Doctor Name", "Appointment Time (MM/DD/YYYY HH:MM 24h Format)", "Patient Testimony", "Export"};
     }
 
     void AppointmentRecords::createNewAppointment(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output){
@@ -30,6 +30,6 @@ namespace Domain::Records{
             //Export to file
         }
         _logger << "Appointment created successfully";
-        _persistentData->debugApp();
+        //_persistentData->debugApp();
     }
 }
