@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <ctime>
+#include <algorithm>
 
 #include "Domain/Records/VisitRecords.hpp"
 
@@ -33,6 +34,19 @@ namespace Domain::Records{
         }
         _logger << "Visit record created successfully";
         //_persistentData->debugVisits();
+    }
+
+    std::vector<TechnicalServices::Persistence::VisitRecords> VisitRecords::getRecordsByRange(int beginMonth, int beginYear, int endMonth, int endYear) {
+        std::vector<TechnicalServices::Persistence::VisitRecords> allRecords =  _persistentData->getAllVisitRecords();
+
+        tm beginDate = { 0, 0, 0, 0, beginMonth - 1, beginYear - 1900, 0, 0, 0 };
+        tm endDate = { 0, 0, 0, 0, endMonth - 1, endYear - 1900, 0, 0, 0 };
+
+        std::vector<TechnicalServices::Persistence::VisitRecords> records;
+        std::copy_if(allRecords.begin(), allRecords.end(), std::back_inserter(records), [beginDate, endDate](TechnicalServices::Persistence::VisitRecords r) mutable {
+            return ( (difftime(mktime(&endDate), mktime(&r.inDate)) > 0.0) && (difftime(mktime(&r.inDate), mktime(&beginDate)) > 0.0) );
+        });
+        return records;
     }
 
     std::vector<TechnicalServices::Persistence::VisitRecords> VisitRecords::getRecords(int size) {

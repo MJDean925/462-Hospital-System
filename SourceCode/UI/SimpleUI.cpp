@@ -269,15 +269,25 @@ namespace UI
                                 selectedCommand = trendCommands[selection];
                                 if(selectedCommand == "View Recent Visits") {
                                     std::cout << "View Recent Visits selected";
-                                    auto records = _visitRecords->getRecords(10); 
+                                    auto records = _visitRecords->getRecords(15); 
                                     for(auto record : records) {
-                                        std::cout << record.patientName << " (" << record.doctorName << ") " << std::endl;
+                                        std::cout << asctime(&record.inDate) << ": "<< record.patientName << " (" << record.doctorName << ") " << std::endl;
                                     }
                                 }
 
                                 else if (selectedCommand == "Diagnoses By Month") {
-                                    std::cout << "Diagnoses By Month selected";
-                                    
+                                    std::cout << "Diagnoses By Month selected" << std::endl << std::endl;
+
+                                    int startMonth, startYear, endMonth, endYear;
+                                    std::cout << "Start month: " << std::endl; std::cin >> startMonth;
+                                    std::cout << "Start year: " << std::endl; std::cin >> startYear;
+                                    std::cout << "End month: " << std::endl; std::cin >> endMonth;
+                                    std::cout << "End year: " << std::endl; std::cin >> endYear;
+
+                                    auto records = _visitRecords->getRecordsByRange(startMonth, startYear, endMonth, endYear);
+                                    for(auto record : records) {
+                                        std::cout << record.patientName << " (" << record.doctorName << ") " << std::endl;
+                                    }
                                 }
 
                                 else if(selectedCommand == "Main Menu") {
