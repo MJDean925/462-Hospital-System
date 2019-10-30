@@ -55,28 +55,28 @@ namespace TechnicalServices::Persistence
             // Name, Doctor, inTime, outTime, Testimony, Diagnosis, Treatment, Referral, Prescription
             {"Alex Jones", "Dr. Brown", inTime, outTime, "Experiencing itching, burning sensation and redness in eyes. Vision deteriorating at times.", "Conjuctivitis", "Prescribed antibiotic eye drops", "", "Antibiotic eye drops"},
             {"Peter Parker", "Dr. Phillips", inTime, outTime, "Frequent bowel movements, cramping in the abdomen.", "Diarrhea", "Treatment", "", ""},
-            {"Walter White", "Dr. Belknap", inTime, outTime, "While working at the car wash, experienced intense coughing and then suddenly passed out.", "Lung Cancer", "Ongoing chemotherapy", "", ""},
             {"Linus Torvalds", "Dr. Adams", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
             {"Donald Trump", "Dr. Barry", inTime, outTime, "Testimony", "Conjuctivitis", "Prescribed antibiotic eye drops", "", ""},
-            {"Barack Obama", "Dr. Chapman", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
+            {"Barack Obama", "Dr. Chapman", inTime, outTime, "Testimony", "Conjuctivitis", "Treatment", "", ""},
             {"Alec Baldwin", "Dr. Brown", inTime, outTime, "Testimony", "Diarrhea", "Treatment", "", ""},
             {"Taylor Swift", "Dr. Phillips", inTime, outTime, "Testimony", "Conjuctivitis", "", "", ""},
             {"Ron Swanson", "Dr. Adams", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
-            {"Alex Jones", "Dr. Barry", inTime, outTime, "Hay fever", "Allergies", "Treatment", "", ""},
-            {"Anthony Fantano", "Dr. Chapman", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
+            {"Alex Jones", "Dr. Barry", inTime, outTime, "Hay fever", "Mononucleosis", "Treatment", "", ""},
+            {"Anthony Fantano", "Dr. Chapman", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
             {"Mark Zuckerberg", "Dr. Brown", inTime, outTime, "Testimony", "Mononucleosis", "Treatment", "", ""},
             {"Kanye West", "Dr. Phillips", inTime, outTime, "Testimony", "Conjuctivitis", "", "", ""},
+            {"Walter White", "Dr. Belknap", inTime, outTime, "While working at the car wash, experienced intense coughing and then suddenly passed out.", "Lung Cancer", "Ongoing chemotherapy", "", ""},
             {"Dennis Ritchie", "Dr. Adams", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""},
             {"Jon Snow", "Dr. Barry", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""}
         };
 
-        // edit dates (doesn't work for some reason)
+        // edit dates 
         for(int i = 0; i < _visitRecords.size(); i++) {
             int randomSeed = 145678;
             tm newInTime = inTime;
             tm newOutTime = outTime;
             
-            newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - (i / 4)) % 12;
+            newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - ((i + 1) / 4)) % 12;
             newInTime.tm_mday = newOutTime.tm_mday = randomSeed / (i + 1) % 28;
             
             _visitRecords[i].inDate = newInTime;

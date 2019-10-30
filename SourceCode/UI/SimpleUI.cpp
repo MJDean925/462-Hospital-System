@@ -281,10 +281,10 @@ namespace UI
                                     std::cout << "Diagnoses By Month selected" << std::endl << std::endl;
 
                                     int startMonth, startYear, endMonth, endYear;
-                                    std::cout << "Start month: " << std::endl; std::cin >> startMonth;
-                                    std::cout << "Start year: " << std::endl; std::cin >> startYear;
-                                    std::cout << "End month: " << std::endl; std::cin >> endMonth;
-                                    std::cout << "End year: " << std::endl; std::cin >> endYear;
+                                    std::cout << "Start month: "; std::cin >> startMonth;
+                                    std::cout << "Start year: "; std::cin >> startYear;
+                                    std::cout << "End month: "; std::cin >> endMonth;
+                                    std::cout << "End year: "; std::cin >> endYear;
 
                                     auto records = _visitRecords->getRecordsByRange(startMonth, startYear, endMonth, endYear);
                                     const char * months[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
@@ -297,12 +297,13 @@ namespace UI
                                     std::vector<std::string> diagnoses = {};                             
                                     std::map<std::string, int> diagnosisList;
 
+                                    int count = 0;
                                     for(auto record : records) {
                                         currentMonth = record.inDate.tm_mon;
                                         currentYear = record.inDate.tm_year + 1900;
 
                                         diagnoses.push_back(record.diagnosis);
-                                        if(currentMonth != previousMonth || currentYear != previousYear) {
+                                        if(currentMonth != previousMonth || currentYear != previousYear || count == records.size() - 1) {
                                             std::cout << months[previousMonth] << " " << previousYear << std::endl;
                                             std::sort(diagnoses.begin(), diagnoses.end(), [](std::string a, std::string b) { return a > b; });
 
@@ -315,7 +316,16 @@ namespace UI
                                                 }
                                             }
 
-                                            for(auto it = diagnosisList.begin(); it != diagnosisList.end(); ++it) {
+                                            // sort diagnoses by most common
+                                            typedef std::pair<std::string,int> stringIntPair;
+                                            std::vector<stringIntPair> sortedDiagnosisList;
+                                            std::copy(diagnosisList.begin(), diagnosisList.end(), std::back_inserter<std::vector<stringIntPair>>(sortedDiagnosisList));
+                                            std::sort(sortedDiagnosisList.begin(), sortedDiagnosisList.end(),
+                                                [](const stringIntPair& l, const stringIntPair& r) {
+                                                    return l.second >= r.second;
+                                                });
+
+                                            for(auto it = sortedDiagnosisList.begin(); it != sortedDiagnosisList.end(); ++it) {
                                                 std::cout << std::setw(20) << it->first << "\t";
 
                                                 int divisor = 1; // will change dynamically in the future
@@ -331,6 +341,7 @@ namespace UI
                                             previousMonth = currentMonth;
                                             previousYear = previousYear;
                                         }
+                                        count++;
 
 
 
