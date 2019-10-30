@@ -4,7 +4,9 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <map>
 #include <ctime>
+#include <algorithm>
 
 #include "Domain/Sessions/Session.hpp"
 #include "Domain/AccountManagement/UserAccounts.hpp"
@@ -285,9 +287,63 @@ namespace UI
                                     std::cout << "End year: " << std::endl; std::cin >> endYear;
 
                                     auto records = _visitRecords->getRecordsByRange(startMonth, startYear, endMonth, endYear);
+                                    const char * months[12] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+                                    // int previousMonth, previousYear = 0;
+                                    int previousMonth = records[0].inDate.tm_mon;
+                                    int previousYear = records[0].inDate.tm_year + 1900;
+                                    int currentMonth, currentYear;
+
+                                    std::vector<std::string> diagnoses = {};                             
+                                    std::map<std::string, int> diagnosisList;
+
                                     for(auto record : records) {
-                                        std::cout << record.patientName << " (" << record.doctorName << ") " << std::endl;
+                                        currentMonth = record.inDate.tm_mon;
+                                        currentYear = record.inDate.tm_year + 1900;
+
+                                        diagnoses.push_back(record.diagnosis);
+                                        if(currentMonth != previousMonth || currentYear != previousYear) {
+                                            std::cout << months[previousMonth] << " " << previousYear << std::endl;
+                                            std::sort(diagnoses.begin(), diagnoses.end(), [](std::string a, std::string b) { return a > b; });
+
+                                            while(diagnoses.size() > 0) {
+                                                std::string currentDiagnosis = diagnoses.back();
+                                                diagnosisList[currentDiagnosis] = 0;
+                                                while(diagnoses.back() == currentDiagnosis) {
+                                                    diagnoses.pop_back();
+                                                    diagnosisList[currentDiagnosis] += 1;
+                                                }
+                                            }
+
+                                            for(auto it = diagnosisList.begin(); it != diagnosisList.end(); ++it) {
+                                                std::cout << std::setw(20) << it->first << "\t";
+
+                                                int divisor = 1; // will change dynamically in the future
+                                                for(int i = 0; i < it->second; i += divisor) {
+                                                    std::cout << "|";
+                                                }
+                                                std::cout << std::endl;
+                                            }
+
+                                            std::cout << std::endl;
+
+                                            diagnosisList.clear();
+                                            previousMonth = currentMonth;
+                                            previousYear = previousYear;
+                                        }
+
+
+
+
                                     }
+
+                                    // int startMonthYear = startYear * 12 + startMonth;
+                                    // int endMonthYear = endYear * 12 + endMonth;
+                                    // for(int i = startMonthYear; i <= endMonthYear; i++) {
+                                    //     int currentMonth = (i % 12) - 1;
+                                    //     int currentYear = i / 12;
+                                    //     std::cout << months[currentMonth] << " " << currentYear << std::endl;                                        
+                                    // }
                                 }
 
                                 else if(selectedCommand == "Main Menu") {
