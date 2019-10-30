@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "TechnicalServices/Persistence/SimpleDB.hpp"
 
 namespace Domain::Records{
     class RecordHandler{

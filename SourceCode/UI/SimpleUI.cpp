@@ -258,18 +258,20 @@ namespace UI
                             std::cout << "View Trends selected\n"; 
                             viewingTrends = true;
                             do {
+                                selection = 0;
                                 std::vector<std::string> trendCommands = {"View Recent Visits", "Diagnoses By Month", "Main Menu"};
                                 do {
                                     for (unsigned int i = 0; i < trendCommands.size(); i++){
                                         std::cout << std::setw(2) << i << " - " << trendCommands[i] << "\n";
                                     }
+                                    std::cin >> selection;
                                 }while(selection >= trendCommands.size());
                                 selectedCommand = trendCommands[selection];
-
                                 if(selectedCommand == "View Recent Visits") {
-                                    auto records = _visitRecords->getRecords(15);
+                                    std::cout << "View Recent Visits selected";
+                                    auto records = _visitRecords->getRecords(10); 
                                     for(auto record : records) {
-                                        std::cout << record.patientName << " (" << record.doctorName << ") ";
+                                        std::cout << record.patientName << " (" << record.doctorName << ") " << std::endl;
                                     }
                                 }
 

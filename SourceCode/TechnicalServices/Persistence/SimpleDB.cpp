@@ -70,18 +70,18 @@ namespace TechnicalServices::Persistence
             {"Jon Snow", "Dr. Barry", inTime, outTime, "Testimony", "Flu", "Treatment", "", ""}
         };
 
-        // edit dates
-        for(int i = 0; i < _visitRecords.size(); i++) {
-            int randomSeed = 145678;
-            tm newInTime = inTime;
-            tm newOutTime = outTime;
+        // edit dates (doesn't work for some reason)
+        // for(int i = 0; i < _visitRecords.size(); i++) {
+        //     int randomSeed = 145678;
+        //     tm newInTime = inTime;
+        //     tm newOutTime = outTime;
             
-            newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - (i / 4)) % 12;
-            newInTime.tm_mday = newOutTime.tm_mday = randomSeed / i % 28;
+        //     newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - (i / 4)) % 12;
+        //     newInTime.tm_mday = newOutTime.tm_mday = randomSeed / i % 28;
             
-            _visitRecords[i].inDate = newInTime;
-            _visitRecords[i].outDate = newOutTime;
-        }
+        //     _visitRecords[i].inDate = newInTime;
+        //     _visitRecords[i].outDate = newOutTime;
+        // }
         _logger << "Simple DB has been successfully initialized";
     }
 
@@ -107,7 +107,7 @@ namespace TechnicalServices::Persistence
 
     std::vector<VisitRecords> SimpleDB::getRecentVisitRecords(int size) {
         std::vector<VisitRecords> records = _visitRecords;
-        records.erase(records.end() - size - 1, records.end() - 1);
+        records.erase(records.begin(), records.end() - size);
         return records;
     }
 
