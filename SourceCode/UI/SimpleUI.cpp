@@ -275,7 +275,12 @@ namespace UI
                                     }
                                 }
 
-                                if(selectedCommand == "Main Menu") {
+                                else if (selectedCommand == "Diagnoses By Month") {
+                                    std::cout << "Diagnoses By Month selected";
+                                    
+                                }
+
+                                else if(selectedCommand == "Main Menu") {
                                     viewingTrends = false;
                                 }
                             }while(viewingTrends);

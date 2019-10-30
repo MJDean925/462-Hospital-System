@@ -71,17 +71,17 @@ namespace TechnicalServices::Persistence
         };
 
         // edit dates (doesn't work for some reason)
-        // for(int i = 0; i < _visitRecords.size(); i++) {
-        //     int randomSeed = 145678;
-        //     tm newInTime = inTime;
-        //     tm newOutTime = outTime;
+        for(int i = 0; i < _visitRecords.size(); i++) {
+            int randomSeed = 145678;
+            tm newInTime = inTime;
+            tm newOutTime = outTime;
             
-        //     newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - (i / 4)) % 12;
-        //     newInTime.tm_mday = newOutTime.tm_mday = randomSeed / i % 28;
+            newInTime.tm_mon = newOutTime.tm_mon = (inTime.tm_mon - (i / 4)) % 12;
+            newInTime.tm_mday = newOutTime.tm_mday = randomSeed / (i + 1) % 28;
             
-        //     _visitRecords[i].inDate = newInTime;
-        //     _visitRecords[i].outDate = newOutTime;
-        // }
+            _visitRecords[i].inDate = newInTime;
+            _visitRecords[i].outDate = newOutTime;
+        }
         _logger << "Simple DB has been successfully initialized";
     }
 
