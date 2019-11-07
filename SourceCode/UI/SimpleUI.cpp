@@ -84,7 +84,7 @@ namespace UI
                         if(selectedCommand == "Create Record"){
                             std::cout << "Create Record selected\n"; 
                             //Figure out what goes in visit records
-                            std::vector<std::string> visitFields = _visitRecords->requestNewRecord();
+                            std::vector<std::string> visitFields = _visitRecords->requestNew();
                             //Vector for entries
                             std::vector<std::string> entries;
                             std::string output;
@@ -134,7 +134,7 @@ namespace UI
                             std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
                             std::getline(std::cin,output);
                             //Call method using data gathered
-                            _visitRecords->createNewRecord(entries[0], entries[1], entries[2], entries[3], entries[4], entries[5], entries[6], inDate, outDate, output);
+                            _visitRecords->createNew(entries[0], entries[1], entries[2], entries[3], entries[4], entries[5], entries[6], inDate, outDate, output);
                         }
                         else if(selectedCommand == "Logout"){
                             std::cout << "Logout selected\n";
@@ -164,7 +164,7 @@ namespace UI
                         if(selectedCommand == "Create Appointment"){
                             std::cout << "Create Appointment selected\n"; 
                             //Add functionality
-                            std::vector<std::string> appFields = _appointmentRecords->requestNewAppointment();
+                            std::vector<std::string> appFields = _appointmentRecords->requestNew();
                             std::vector<std::string> entries;
                             std::string output;
                             tm date;
@@ -228,7 +228,7 @@ namespace UI
                             //Called to fill in the blanks
                             mktime(&date);
 
-                            _appointmentRecords->createNewAppointment(entries[0], entries[1], date, entries[3], output);
+                            _appointmentRecords->createNew(entries[0], entries[1], date, entries[3], output);
                         }
                         else if(selectedCommand == "Logout"){
                             std::cout << "Logout selected\n";

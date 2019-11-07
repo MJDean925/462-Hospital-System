@@ -17,8 +17,8 @@ namespace Domain::Records{
             VisitRecords();
 
             //Operations
-            std::vector<std::string> requestNewRecord() override;
-            void createNewRecord(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) override;
+            std::vector<std::string> requestNew() override;
+            void createNew(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) override;
             std::vector<TechnicalServices::Persistence::VisitRecords> getRecordsByRange(int beginYear, int beginMonth, int endYear, int endMonth);
             std::vector<TechnicalServices::Persistence::VisitRecords> getRecords(int size);
 

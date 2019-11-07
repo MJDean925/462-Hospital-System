@@ -19,11 +19,11 @@ namespace Domain::Records{
     }
 
     //Operations
-    std::vector<std::string> AppointmentRecords::requestNewAppointment(){
+    std::vector<std::string> AppointmentRecords::requestNew(){
         return {"Patient Name", "Doctor Name", "Appointment Time (MM/DD/YYYY HH:MM 24h Format)", "Patient Testimony", "Export"};
     }
 
-    void AppointmentRecords::createNewAppointment(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output){
+    void AppointmentRecords::createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output){
         TechnicalServices::Persistence::AppointmentRecords a = {pName, dName, appTime, pTestimony};
         _persistentData->addAppointment(a);
         if (output == "Y" || output == "y"){

@@ -15,10 +15,10 @@ namespace Domain::Records{
 
             //Operations
             //Virtual function needs a default implementation otherwise would need to be defined in derived classes even if unused there
-            virtual std::vector<std::string> requestNewRecord() {}
-            virtual void createNewRecord(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) {} 
-            virtual std::vector<std::string> requestNewAppointment() {}
-            virtual void createNewAppointment(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) {}
+            virtual std::vector<std::string> requestNew() = 0;
+            virtual void createNew(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) {}
+            //virtual std::vector<std::string> requestNewAppointment() {}
+            virtual void createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) {}
             virtual std::vector<TechnicalServices::Persistence::VisitRecords> getRecordsByRange(int beginYear, int beginMonth, int endYear, int endMonth) {};
             virtual std::vector<TechnicalServices::Persistence::VisitRecords> getRecords(int size) {};
 

@@ -22,11 +22,11 @@ namespace Domain::Records{
     }
 
     //Operations
-    std::vector<std::string> VisitRecords::requestNewRecord(){
+    std::vector<std::string> VisitRecords::requestNew(){
         return {"Patient Name", "Doctor Name", "Patient Testimony", "Diagnosis", "Treatment Plan", "Referral", "Prescription", "In Time", "Out Time", "Export"};
     }
 
-    void VisitRecords::createNewRecord(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output){
+    void VisitRecords::createNew(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output){
         TechnicalServices::Persistence::VisitRecords v = {pName, dName, inDate, outDate, pTestimony, diag, treatment, ref, presc};
         _persistentData->addRecord(v);
         if (output == "Y" || output == "y"){

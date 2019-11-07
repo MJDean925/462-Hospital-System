@@ -14,8 +14,8 @@ namespace Domain::Records{
             AppointmentRecords();
 
             //Operations
-            std::vector<std::string> requestNewAppointment() override;
-            void createNewAppointment(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) override;
+            std::vector<std::string> requestNew() override;
+            void createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) override;
 
             //Destructor
             ~AppointmentRecords() noexcept override;
