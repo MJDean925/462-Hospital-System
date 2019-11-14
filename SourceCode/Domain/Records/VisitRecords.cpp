@@ -5,6 +5,7 @@
 #include <algorithm>
 
 #include "Domain/Records/VisitRecords.hpp"
+#include "Domain/Prescriptions/CVSPrescription.hpp"
 
 #include "TechnicalServices/Logging/SimpleLogger.hpp"
 #include "TechnicalServices/Persistence/SimpleDB.hpp"
@@ -12,7 +13,8 @@
 namespace Domain::Records{
     VisitRecords::VisitRecords():
     _persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>()),
-    _loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>())
+    _loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>()),
+    _prescriptionService(std::make_unique<Domain::Prescriptions::CVSPresctiption>())
     {
         _logger << "Visit Records has been successfully initialized";
     }
@@ -34,6 +36,9 @@ namespace Domain::Records{
         }
         _logger << "Visit record created successfully";
         //_persistentData->debugVisits();
+        if (presc != ""){
+            _prescriptionService->newPrescription();
+        }
     }
 
     std::vector<TechnicalServices::Persistence::VisitRecords> VisitRecords::getRecordsByRange(int beginMonth, int beginYear, int endMonth, int endYear) {

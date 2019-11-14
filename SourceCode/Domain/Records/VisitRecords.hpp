@@ -6,6 +6,7 @@
 #include <ctime>
 
 #include "Domain/Records/RecordHandler.hpp"
+#include "Domain/Prescriptions/PrescriptionHandler.hpp"
 
 #include "TechnicalServices/Logging/LoggerHandler.hpp"
 #include "TechnicalServices/Persistence/PersistenceHandler.hpp"
@@ -26,6 +27,7 @@ namespace Domain::Records{
             ~VisitRecords() noexcept override;
 
         private:
+            std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescriptionService;
             std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _persistentData;
             std::unique_ptr<TechnicalServices::Logging::LoggerHandler> _loggerPtr;
 

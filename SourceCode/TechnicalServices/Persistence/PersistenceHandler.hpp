@@ -12,16 +12,6 @@ namespace TechnicalServices::Persistence
         std::string         userName;
         std::string         passPhrase;
         std::string         role;
-        unsigned int        id;
-    };
-
-    struct Doctor
-    {
-        std::string         Name;
-        std::string         Address;
-        std::string         NPINumber;
-        std::string         DEANumber;
-        unsigned int        id;
     };
 
     //Add structs for Analyst, Receptionist, Patients
