@@ -27,6 +27,7 @@ namespace TechnicalServices::Persistence
         std::string         treatmentPlan;
         std::string         referral;
         std::string         prescription;
+        //int                 ID;
     };
 
     struct AppointmentRecords
@@ -35,6 +36,15 @@ namespace TechnicalServices::Persistence
         std::string         doctorName;
         tm                  date;
         std::string         patientTestimony;
+    };
+
+    struct PatientRecords
+    {
+        std::string         Name;
+        std::string         Address;
+        std::string         Insurance;
+        std::string         PreferredPharmacy;
+        std::vector<int>    VisitRecordIDs;
     };
 
     class PersistenceHandler{
