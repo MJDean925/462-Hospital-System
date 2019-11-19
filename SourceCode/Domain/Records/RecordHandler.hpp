@@ -19,8 +19,11 @@ namespace Domain::Records{
             virtual void createNew(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) {}
             //virtual std::vector<std::string> requestNewAppointment() {}
             virtual void createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) {}
-            virtual std::vector<TechnicalServices::Persistence::VisitRecords> getRecordsByRange(int beginYear, int beginMonth, int endYear, int endMonth) {};
-            virtual std::vector<TechnicalServices::Persistence::VisitRecords> getRecords(int size) {};
+            virtual std::vector<TechnicalServices::Persistence::VisitRecord> getRecordsByRange(int beginYear, int beginMonth, int endYear, int endMonth) {};
+            virtual std::vector<TechnicalServices::Persistence::VisitRecord> getRecords(int size) {};
+            virtual std::vector<TechnicalServices::Persistence::PatientRecord> getPRecords() {};
+            virtual std::vector<TechnicalServices::Persistence::VisitRecord> getVRecords() {};
+            virtual std::vector<TechnicalServices::Persistence::AppointmentRecord> getARecords() {};
 
             //Destructor
             virtual ~RecordHandler() noexcept = 0;

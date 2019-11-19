@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <memory>
 
 #include "Domain/Records/RecordHandler.hpp"
@@ -8,18 +9,16 @@
 #include "TechnicalServices/Logging/LoggerHandler.hpp"
 
 namespace Domain::Records{
-    class AppointmentRecords : public Domain::Records::RecordHandler{
+    class PatientRecords : public Domain::Records::RecordHandler{
         public:
             using RecordHandler::RecordHandler;
-            AppointmentRecords();
+            PatientRecords();
 
             //Operations
-            std::vector<std::string> requestNew() override;
-            void createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) override;
-            std::vector<TechnicalServices::Persistence::AppointmentRecord> getARecords() override;
+            std::vector<TechnicalServices::Persistence::PatientRecord> getPRecords() override;
 
             //Destructor
-            ~AppointmentRecords() noexcept override;
+            ~PatientRecords() noexcept override;
 
         private:
             std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _persistentData;

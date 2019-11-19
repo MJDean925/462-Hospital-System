@@ -20,8 +20,9 @@ namespace Domain::Records{
             //Operations
             std::vector<std::string> requestNew() override;
             void createNew(std::string pName, std::string dName, std::string pTestimony, std::string diag, std::string treatment, std::string ref, std::string presc, tm inDate, tm outDate, std::string output) override;
-            std::vector<TechnicalServices::Persistence::VisitRecords> getRecordsByRange(int beginYear, int beginMonth, int endYear, int endMonth);
-            std::vector<TechnicalServices::Persistence::VisitRecords> getRecords(int size);
+            std::vector<TechnicalServices::Persistence::VisitRecord> getRecordsByRange(int beginYear, int beginMonth, int endYear, int endMonth) override;
+            std::vector<TechnicalServices::Persistence::VisitRecord> getRecords(int size) override;
+            std::vector<TechnicalServices::Persistence::VisitRecord> getVRecords() override;
 
             //Destructor
             ~VisitRecords() noexcept override;

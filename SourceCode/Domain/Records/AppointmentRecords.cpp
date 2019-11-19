@@ -24,12 +24,16 @@ namespace Domain::Records{
     }
 
     void AppointmentRecords::createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output){
-        TechnicalServices::Persistence::AppointmentRecords a = {pName, dName, appTime, pTestimony};
+        TechnicalServices::Persistence::AppointmentRecord a = {pName, dName, appTime, pTestimony};
         _persistentData->addAppointment(a);
         if (output == "Y" || output == "y"){
             //Export to file
         }
         _logger << "Appointment created successfully";
         //_persistentData->debugApp();
+    }
+
+    std::vector<TechnicalServices::Persistence::AppointmentRecord> AppointmentRecords::getARecords(){
+        return _persistentData->getAllAppRecords;
     }
 }

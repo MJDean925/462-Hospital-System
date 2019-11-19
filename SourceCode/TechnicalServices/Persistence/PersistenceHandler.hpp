@@ -16,7 +16,7 @@ namespace TechnicalServices::Persistence
 
     //Add structs for Analyst, Receptionist, Patients
 
-    struct VisitRecords
+    struct VisitRecord
     {
         std::string         patientName;
         std::string         doctorName;
@@ -30,7 +30,7 @@ namespace TechnicalServices::Persistence
         //int                 ID;
     };
 
-    struct AppointmentRecords
+    struct AppointmentRecord
     {
         std::string         patientName;
         std::string         doctorName;
@@ -38,13 +38,13 @@ namespace TechnicalServices::Persistence
         std::string         patientTestimony;
     };
 
-    struct PatientRecords
+    struct PatientRecord
     {
         std::string         Name;
         std::string         Address;
         std::string         Insurance;
         std::string         PreferredPharmacy;
-        std::vector<int>    VisitRecordIDs;
+        //std::vector<int>    VisitRecordIDs;
     };
 
     class PersistenceHandler{
@@ -58,12 +58,14 @@ namespace TechnicalServices::Persistence
             //Operations
             virtual std::vector<std::string> findRoles() = 0;
             virtual UserCredentials findCredentialsByName( const std::string & name) = 0;
-            virtual void addRecord(const VisitRecords & v) = 0;
-            virtual void addAppointment(const AppointmentRecords & a) = 0;
+            virtual void addRecord(const VisitRecord & v) = 0;
+            virtual void addAppointment(const AppointmentRecord & a) = 0;
             virtual void debugVisits() = 0;
             virtual void debugApp() = 0;
-            virtual std::vector<VisitRecords> getRecentVisitRecords(int size) = 0;
-            virtual std::vector<VisitRecords> getAllVisitRecords() = 0;
+            virtual std::vector<VisitRecord> getRecentVisitRecords(int size) = 0;
+            virtual std::vector<VisitRecord> getAllVisitRecords() = 0;
+            virtual std::vector<PatientRecord> getAllPatientRecords() = 0;
+            virtual std::vector<AppointmentRecord> getAllAppRecords() = 0;
 
             //Destructor
             virtual ~PersistenceHandler() noexcept = 0;

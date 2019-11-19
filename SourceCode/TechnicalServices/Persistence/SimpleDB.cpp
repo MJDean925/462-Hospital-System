@@ -82,14 +82,21 @@ namespace TechnicalServices::Persistence
             _visitRecords[i].inDate = newInTime;
             _visitRecords[i].outDate = newOutTime;
         }
+
+        _patients = {
+            {"John Doe", "123 1st Street", "Blue Shield of California", "CVS Pharmacy: 321 2nd Street"},
+            {"Jane Doe", "456 57th Street", "Some other Insurace of California", "CVS Pharmacy: 987 59th Street"},
+            {"Dick Richards", "789 81st Street Apt 46", "Insurace part 2 electric boogaloo", "Stater Bros. Pharmacy: 222 90th Street"}
+        };
+
         _logger << "Simple DB has been successfully initialized";
     }
 
-    void SimpleDB::addRecord(const VisitRecords & v){
+    void SimpleDB::addRecord(const VisitRecord & v){
         _visitRecords.push_back(v);
     }
 
-    void SimpleDB::addAppointment(const AppointmentRecords & a){
+    void SimpleDB::addAppointment(const AppointmentRecord & a){
         _appRecords.push_back(a);
     }
 
@@ -105,15 +112,21 @@ namespace TechnicalServices::Persistence
         }
     }
 
-    std::vector<VisitRecords> SimpleDB::getRecentVisitRecords(int size) {
-        std::vector<VisitRecords> records = _visitRecords;
+    std::vector<VisitRecord> SimpleDB::getRecentVisitRecords(int size) {
+        std::vector<VisitRecord> records = _visitRecords;
         records.erase(records.begin(), records.end() - size);
         return records;
     }
 
-    std::vector<VisitRecords> SimpleDB::getAllVisitRecords() {
+    std::vector<VisitRecord> SimpleDB::getAllVisitRecords() {
         return _visitRecords;
     }
 
+    std::vector<PatientRecord> SimpleDB::getAllPatientRecords(){
+        return _patients;
+    }
 
+    std::vector<AppointmentRecord> SimpleDB::getAllAppRecords(){
+        return _appRecords;
+    }
 }
