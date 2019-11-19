@@ -34,6 +34,6 @@ namespace Domain::Records{
     }
 
     std::vector<TechnicalServices::Persistence::AppointmentRecord> AppointmentRecords::getARecords(){
-        return _persistentData->getAllAppRecords;
+        return _persistentData->getAllAppRecords();
     }
 }

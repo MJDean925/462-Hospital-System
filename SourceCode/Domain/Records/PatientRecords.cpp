@@ -19,6 +19,6 @@ namespace Domain::Records{
 
     //Operations
     std::vector<TechnicalServices::Persistence::PatientRecord> PatientRecords::getPRecords(){
-        return _persistentData->getAllPatientRecords;
+        return _persistentData->getAllPatientRecords();
     }
 }
