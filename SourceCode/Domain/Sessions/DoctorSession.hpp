@@ -31,6 +31,6 @@ namespace Domain::Sessions{
     _pData (std::make_unique<TechnicalServices::Persistence::SimpleDB>()){}
 
     inline std::vector<std::string> DoctorSession::getCommands(){
-        return {"Create Record", "Logout", "Shutdown"};
+        return {"Create Record", "View All Records", "Logout", "Shutdown"};
     }
 }

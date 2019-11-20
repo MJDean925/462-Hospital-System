@@ -136,6 +136,19 @@ namespace UI
                             //Call method using data gathered
                             _visitRecords->createNew(entries[0], entries[1], entries[2], entries[3], entries[4], entries[5], entries[6], inDate, outDate, output);
                         }
+                        else if(selectedCommand == "View All Records"){
+                            std::vector<TechnicalServices::Persistence::VisitRecord> vRecords = _visitRecords->getVRecords();
+                            std::vector<TechnicalServices::Persistence::AppointmentRecord> aRecords = _appointmentRecords->getARecords();
+
+                            std::cout << "Visit records:\n";
+                            for (unsigned int i = 0; i < vRecords.size(); i++){
+                                std::cout << "    " << vRecords[i].patientName << ", " << vRecords[i].doctorName << ", " << asctime(&vRecords[i].inDate);
+                            }
+                            std::cout <<"\nAppointment records:\n";
+                            for (unsigned int i = 0; i < aRecords.size(); i++){
+                                std::cout << "    " << aRecords[i].patientName <<  ", " << aRecords[i].doctorName << ", " << asctime(&aRecords[i].date);
+                            }
+                        }
                         else if(selectedCommand == "Logout"){
                             std::cout << "Logout selected\n";
                             std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
