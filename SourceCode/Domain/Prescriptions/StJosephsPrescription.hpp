@@ -23,6 +23,6 @@ namespace Domain::Prescriptions{
             TechnicalServices::Logging::LoggerHandler & _logger = *_loggerPtr;
     };
 
-    inline StJosephsPrescription::~StJosephsPrescription() noexcept 
+    inline StJosephsPrescription::~StJosephsPrescription() noexcept
     {}
 }
