@@ -34,7 +34,7 @@ namespace TechnicalServices::Persistence
         //int                 ID;
     };
 
-    struct AppointmentRecord : Record
+    struct AppointmentRecord
     {
         std::string         patientName;
         std::string         doctorName;
