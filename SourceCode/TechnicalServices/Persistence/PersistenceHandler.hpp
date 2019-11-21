@@ -16,6 +16,10 @@ namespace TechnicalServices::Persistence
 
     //Add structs for Analyst, Receptionist, Patients
 
+    struct Record{
+
+    };
+
     struct VisitRecord
     {
         std::string         patientName;
@@ -30,7 +34,7 @@ namespace TechnicalServices::Persistence
         //int                 ID;
     };
 
-    struct AppointmentRecord
+    struct AppointmentRecord : Record
     {
         std::string         patientName;
         std::string         doctorName;

@@ -18,6 +18,7 @@ namespace Domain::Records{
             void createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output) override;
             std::vector<TechnicalServices::Persistence::AppointmentRecord> getARecords() override;
 
+
             //Destructor
             ~AppointmentRecords() noexcept override;
 

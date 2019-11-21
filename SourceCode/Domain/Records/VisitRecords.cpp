@@ -13,8 +13,7 @@
 namespace Domain::Records{
     VisitRecords::VisitRecords():
     _persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>()),
-    _loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>()),
-    _prescriptionService(std::make_unique<Domain::Prescriptions::CVSPresctiption>())
+    _loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>())
     {
         _logger << "Visit Records has been successfully initialized";
     }
@@ -37,6 +36,7 @@ namespace Domain::Records{
         _logger << "Visit record created successfully";
         //_persistentData->debugVisits();
         if (presc != ""){
+            std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescriptionService = Domain::Prescriptions::PrescriptionHandler::newService();
             _prescriptionService->newPrescription();
         }
     }

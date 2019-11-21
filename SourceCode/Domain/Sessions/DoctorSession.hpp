@@ -21,14 +21,12 @@ namespace Domain::Sessions{
             //Destructor
             ~DoctorSession() noexcept override;
         private:
-            std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _pData;
     };
 
     inline DoctorSession::~DoctorSession() noexcept
     {}
 
-    inline DoctorSession::DoctorSession():
-    _pData (std::make_unique<TechnicalServices::Persistence::SimpleDB>()){}
+    inline DoctorSession::DoctorSession(){}
 
     inline std::vector<std::string> DoctorSession::getCommands(){
         return {"Create Record", "View All Records", "Logout", "Shutdown"};

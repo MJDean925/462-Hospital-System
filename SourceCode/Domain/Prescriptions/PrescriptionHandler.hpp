@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 namespace Domain::Prescriptions{
     class PrescriptionHandler{
         public:
@@ -8,6 +10,7 @@ namespace Domain::Prescriptions{
             PrescriptionHandler(PrescriptionHandler && original) = default;
 
             //Operations
+            static std::unique_ptr<PrescriptionHandler> newService();
             virtual void newPrescription() = 0;
 
             //Destructor

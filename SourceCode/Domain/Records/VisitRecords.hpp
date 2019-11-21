@@ -28,7 +28,7 @@ namespace Domain::Records{
             ~VisitRecords() noexcept override;
 
         private:
-            std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescriptionService;
+            //std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescriptionService;
             std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _persistentData;
             std::unique_ptr<TechnicalServices::Logging::LoggerHandler> _loggerPtr;
 

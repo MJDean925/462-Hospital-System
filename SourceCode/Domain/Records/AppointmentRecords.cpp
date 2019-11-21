@@ -24,7 +24,11 @@ namespace Domain::Records{
     }
 
     void AppointmentRecords::createNew(std::string pName, std::string dName, tm appTime, std::string pTestimony, std::string output){
-        TechnicalServices::Persistence::AppointmentRecord a = {pName, dName, appTime, pTestimony};
+        TechnicalServices::Persistence::AppointmentRecord a;// = {pName, dName, appTime, pTestimony};
+        a.patientName = pName;
+        a.doctorName = dName;
+        a.date = appTime;
+        a. patientTestimony = pTestimony;
         _persistentData->addAppointment(a);
         if (output == "Y" || output == "y"){
             //Export to file
