@@ -29,6 +29,6 @@ namespace Domain::Sessions{
     inline DoctorSession::DoctorSession(){}
 
     inline std::vector<std::string> DoctorSession::getCommands(){
-        return {"Create Record", "View All Records", "Logout", "Shutdown"};
+        return {"Create Record", "Write Prescription", "View All Records", "Logout", "Shutdown"};
     }
 }

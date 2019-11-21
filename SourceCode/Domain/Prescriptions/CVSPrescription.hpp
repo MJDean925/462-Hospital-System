@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 #include "Domain/Prescriptions/PrescriptionHandler.hpp"
 #include "TechnicalServices/Logging/LoggerHandler.hpp"
@@ -12,7 +13,7 @@ namespace Domain::Prescriptions{
             CVSPresctiption();
 
             //Operations
-            void newPrescription() override;
+            void newPrescription(std::string pName, std::string presc) override;
 
             //Destructors
             ~CVSPresctiption() noexcept override;

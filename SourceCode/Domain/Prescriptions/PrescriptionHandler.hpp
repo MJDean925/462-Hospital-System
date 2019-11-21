@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
 namespace Domain::Prescriptions{
     class PrescriptionHandler{
@@ -11,7 +12,7 @@ namespace Domain::Prescriptions{
 
             //Operations
             static std::unique_ptr<PrescriptionHandler> newService();
-            virtual void newPrescription() = 0;
+            virtual void newPrescription(std::string pName, std::string presc) = 0;
 
             //Destructor
             virtual ~PrescriptionHandler() noexcept = 0;

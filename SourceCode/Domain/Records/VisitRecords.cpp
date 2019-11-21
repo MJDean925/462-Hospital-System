@@ -36,8 +36,8 @@ namespace Domain::Records{
         _logger << "Visit record created successfully";
         //_persistentData->debugVisits();
         if (presc != ""){
-            std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescriptionService = Domain::Prescriptions::PrescriptionHandler::newService();
-            _prescriptionService->newPrescription();
+           // std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescriptionService = Domain::Prescriptions::PrescriptionHandler::newService();
+           // _prescriptionService->newPrescription();
         }
     }
 

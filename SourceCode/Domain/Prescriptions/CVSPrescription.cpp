@@ -1,4 +1,5 @@
 #include <memory>
+#include <string>
 
 #include "Domain/Prescriptions/CVSPrescription.hpp"
 
@@ -11,8 +12,8 @@ namespace Domain::Prescriptions{
         _logger << "CVS Prescription service has been successfully initialized.";
     }
 
-    void CVSPresctiption::newPrescription(){
+    void CVSPresctiption::newPrescription(std::string pName, std::string presc){
         //Call to external service to create prescription
-        _logger << "CVS has accepted the prescription.";
+        _logger << "CVS has accepted the prescription of " + presc + " for " + pName;
     }
 }

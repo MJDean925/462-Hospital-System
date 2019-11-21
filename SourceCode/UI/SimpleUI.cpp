@@ -136,6 +136,17 @@ namespace UI
                             //Call method using data gathered
                             _visitRecords->createNew(entries[0], entries[1], entries[2], entries[3], entries[4], entries[5], entries[6], inDate, outDate, output);
                         }
+                        else if(selectedCommand == "Write Prescription"){
+                            std::string pName, presc;
+                            std::cout << "Patient Name: ";
+                            std::cin.ignore(  std::numeric_limits<std::streamsize>::max(), '\n' );
+                            std::getline(std::cin,pName);
+                            std::cout << "Medication: ";
+                            std::getline(std::cin,presc);
+
+                            std::unique_ptr<Domain::Prescriptions::PrescriptionHandler> _prescService = Domain::Prescriptions::PrescriptionHandler::newService();
+                            _prescService->newPrescription(pName, presc);
+                        }
                         else if(selectedCommand == "View All Records"){
                             std::vector<TechnicalServices::Persistence::VisitRecord> vRecords = _visitRecords->getVRecords();
                             std::vector<TechnicalServices::Persistence::AppointmentRecord> aRecords = _appointmentRecords->getARecords();
