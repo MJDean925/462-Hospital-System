@@ -12,6 +12,7 @@
 #include "Domain/AccountManagement/UserAccounts.hpp"
 #include "Domain/Records/VisitRecords.hpp"
 #include "Domain/Records/AppointmentRecords.hpp"
+#include "Domain/Records/PatientRecords.hpp"
 
 #include "TechnicalServices/Logging/LoggerHandler.hpp"
 #include "TechnicalServices/Logging/SimpleLogger.hpp"
@@ -25,6 +26,7 @@ namespace UI
     : _loggerPtr (std::make_unique<TechnicalServices::Logging::SimpleLogger>()),
     _accounts(std::make_unique<Domain::AccountManagement::UserAccounts>()),
     _visitRecords(std::make_unique<Domain::Records::VisitRecords>()),
+    _patients(std::make_unique<Domain::Records::PatientRecords>()),
     _appointmentRecords(std::make_unique<Domain::Records::AppointmentRecords>())
     {
         _logger << "Simple UI has been successfully initialized";
@@ -150,6 +152,7 @@ namespace UI
                         else if(selectedCommand == "View All Records"){
                             std::vector<TechnicalServices::Persistence::VisitRecord> vRecords = _visitRecords->getVRecords();
                             std::vector<TechnicalServices::Persistence::AppointmentRecord> aRecords = _appointmentRecords->getARecords();
+                            std::vector<TechnicalServices::Persistence::PatientRecord> pRecords = _patients->getPRecords();
 
                             std::cout << "Visit records:\n";
                             for (unsigned int i = 0; i < vRecords.size(); i++){
@@ -158,6 +161,11 @@ namespace UI
                             std::cout <<"\nAppointment records:\n";
                             for (unsigned int i = 0; i < aRecords.size(); i++){
                                 std::cout << "    " << aRecords[i].patientName <<  ", " << aRecords[i].doctorName << ", " << asctime(&aRecords[i].date);
+                            }
+                            if (false){ //Switch to False to show before for polymorphism, True for after
+                                std::cout << "\nPatient records:\n";
+                                for (unsigned int i = 0; i < pRecords.size(); i++)
+                                    std::cout << "    " << pRecords[i].Name << ", " << pRecords[i].PreferredPharmacy << '\n';
                             }
                         }
                         else if(selectedCommand == "Logout"){

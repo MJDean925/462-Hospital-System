@@ -28,6 +28,7 @@ namespace UI
         private:
             std::unique_ptr<Domain::Records::RecordHandler> _visitRecords;
             std::unique_ptr<Domain::Records::RecordHandler> _appointmentRecords;
+            std::unique_ptr<Domain::Records::RecordHandler> _patients;
             std::unique_ptr<Domain::AccountManagement::AccountManagementHandler> _accounts;
             std::unique_ptr<TechnicalServices::Logging::LoggerHandler> _loggerPtr;
             TechnicalServices::Logging::LoggerHandler & _logger = *_loggerPtr;

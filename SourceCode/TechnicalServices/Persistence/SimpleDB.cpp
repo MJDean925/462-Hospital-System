@@ -89,6 +89,27 @@ namespace TechnicalServices::Persistence
             {"Dick Richards", "789 81st Street Apt 46", "Insurace part 2 electric boogaloo", "Stater Bros. Pharmacy: 222 90th Street"}
         };
 
+        tm date1, date2;
+        date1.tm_mon = 11;
+        date1.tm_mday = 20;
+        date1.tm_year = 2019 - 1900;
+        date1.tm_hour = 14;
+        date1.tm_min = 30;
+        date1.tm_sec = 0;
+        mktime(&date1);
+        date2.tm_mon = 0;
+        date2.tm_mday = 13;
+        date2.tm_year = 2020 - 1900;
+        date2.tm_hour = 13;
+        date2.tm_min = 45;
+        date2.tm_sec = 0;
+        mktime(&date2);
+        
+        _appRecords = {
+            {"John Doe", "Dr. Adams", date1, "Headache for 2+ weeks"},
+            {"Jane Doe", "Dr. Gregory" , date2, "Knee pain for 3+ weeks"}
+        };
+
         _logger << "Simple DB has been successfully initialized";
     }
 
