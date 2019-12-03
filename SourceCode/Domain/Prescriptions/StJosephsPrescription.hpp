@@ -3,8 +3,8 @@
 #include <memory>
 #include <string>
 
-#include "Domain/Prescriptions/PrescriptionHandler.hpp"
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../Domain/Prescriptions/PrescriptionHandler.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
 
 namespace Domain::Prescriptions{
     class StJosephsPrescription : public Domain::Prescriptions::PrescriptionHandler{

@@ -1,10 +1,10 @@
 #include <vector>
 #include <memory>
 
-#include "Domain/Records/PatientRecords.hpp"
+#include "../../Domain/Records/PatientRecords.hpp"
 
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
 
 namespace Domain::Records{
     PatientRecords::PatientRecords():

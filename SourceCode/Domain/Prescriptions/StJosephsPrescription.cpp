@@ -1,9 +1,9 @@
 #include <memory>
 #include <string>
 
-#include "Domain/Prescriptions/StJosephsPrescription.hpp"
+#include "../../Domain/Prescriptions/StJosephsPrescription.hpp"
 
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
 
 namespace Domain::Prescriptions{
     StJosephsPrescription::StJosephsPrescription():

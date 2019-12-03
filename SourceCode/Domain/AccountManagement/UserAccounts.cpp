@@ -1,10 +1,10 @@
 #include <memory>
 #include <string>
 
-#include "Domain/AccountManagement/UserAccounts.hpp"
+#include "../../Domain/AccountManagement/UserAccounts.hpp"
 
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
 
 namespace Domain::AccountManagement{
     UserAccounts::UserAccounts():

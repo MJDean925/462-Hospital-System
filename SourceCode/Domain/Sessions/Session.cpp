@@ -2,10 +2,10 @@
 #include <stdexcept>
 #include <string>
 
-#include "Domain/Sessions/Session.hpp"
-#include "Domain/Sessions/DoctorSession.hpp"
-#include "Domain/Sessions/ReceptionistSession.hpp"
-#include "Domain/Sessions/AnalystSession.hpp"
+#include "../../Domain/Sessions/Session.hpp"
+#include "../../Domain/Sessions/DoctorSession.hpp"
+#include "../../Domain/Sessions/ReceptionistSession.hpp"
+#include "../../Domain/Sessions/AnalystSession.hpp"
 
 namespace Domain::Sessions{
     std::unique_ptr<SessionHandler> SessionHandler::createSession(const std::string & role){

@@ -3,10 +3,10 @@
 #include <memory>
 #include <string>
 
-#include "Domain/AccountManagement/AccountManagementHandler.hpp"
+#include "../../Domain/AccountManagement/AccountManagementHandler.hpp"
 
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
 
 namespace Domain::AccountManagement{
     class UserAccounts : public Domain::AccountManagement::AccountManagementHandler{

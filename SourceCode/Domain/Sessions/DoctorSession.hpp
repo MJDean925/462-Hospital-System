@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 
-#include "Domain/Sessions/Session.hpp"
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../Domain/Sessions/Session.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
 
 namespace Domain::Sessions{
     class DoctorSession : public Domain::Sessions::SessionHandler{

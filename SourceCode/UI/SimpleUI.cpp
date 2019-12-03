@@ -8,17 +8,17 @@
 #include <ctime>
 #include <algorithm>
 
-#include "Domain/Sessions/Session.hpp"
-#include "Domain/AccountManagement/UserAccounts.hpp"
-#include "Domain/Records/VisitRecords.hpp"
-#include "Domain/Records/AppointmentRecords.hpp"
-#include "Domain/Records/PatientRecords.hpp"
+#include "../../Domain/Sessions/Session.hpp"
+#include "../../Domain/AccountManagement/UserAccounts.hpp"
+#include "../../Domain/Records/VisitRecords.hpp"
+#include "../../Domain/Records/AppointmentRecords.hpp"
+#include "../../Domain/Records/PatientRecords.hpp"
 
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
 
-#include "UI/SimpleUI.hpp"
+#include "../../UI/SimpleUI.hpp"
 
 namespace UI
 {

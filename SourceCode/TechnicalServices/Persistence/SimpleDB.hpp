@@ -4,8 +4,8 @@
 #include <string>
 #include <vector>
 
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
 
 namespace TechnicalServices::Persistence
 {

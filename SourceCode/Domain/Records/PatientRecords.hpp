@@ -3,10 +3,10 @@
 #include <vector>
 #include <memory>
 
-#include "Domain/Records/RecordHandler.hpp"
+#include "../../Domain/Records/RecordHandler.hpp"
 
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
 
 namespace Domain::Records{
     class PatientRecords : public Domain::Records::RecordHandler{

@@ -1,10 +1,10 @@
 #include <memory> 
 #include <string>
 
-#include "Domain/Prescriptions/PrescriptionHandler.hpp"
+#include "../../Domain/Prescriptions/PrescriptionHandler.hpp"
 
-#include "Domain/Prescriptions/CVSPrescription.hpp"
-#include "Domain/Prescriptions/StJosephsPrescription.hpp"
+#include "../../Domain/Prescriptions/CVSPrescription.hpp"
+#include "../../Domain/Prescriptions/StJosephsPrescription.hpp"
 
 namespace Domain::Prescriptions{
     std::unique_ptr<PrescriptionHandler> PrescriptionHandler::newService(){

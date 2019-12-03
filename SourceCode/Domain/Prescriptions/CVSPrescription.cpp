@@ -1,9 +1,9 @@
 #include <memory>
 #include <string>
 
-#include "Domain/Prescriptions/CVSPrescription.hpp"
+#include "../../Domain/Prescriptions/CVSPrescription.hpp"
 
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
 
 namespace Domain::Prescriptions{
     CVSPresctiption::CVSPresctiption():

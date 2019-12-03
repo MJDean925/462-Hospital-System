@@ -1,10 +1,10 @@
 #include <memory>
 #include <ctime>
 
-#include "Domain/Records/AppointmentRecords.hpp"
+#include "../../Domain/Records/AppointmentRecords.hpp"
 
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
 
 namespace Domain::Records{
     AppointmentRecords::AppointmentRecords():

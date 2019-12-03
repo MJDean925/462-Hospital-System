@@ -4,11 +4,11 @@
 #include <ctime>
 #include <algorithm>
 
-#include "Domain/Records/VisitRecords.hpp"
-#include "Domain/Prescriptions/CVSPrescription.hpp"
+#include "../../Domain/Records/VisitRecords.hpp"
+#include "../../Domain/Prescriptions/CVSPrescription.hpp"
 
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
 
 namespace Domain::Records{
     VisitRecords::VisitRecords():

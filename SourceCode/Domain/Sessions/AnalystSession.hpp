@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-#include "Domain/Sessions/Session.hpp"
+#include "../../Domain/Sessions/Session.hpp"
 
 namespace Domain::Sessions{
     class AnalystSession : public Domain::Sessions::SessionHandler{

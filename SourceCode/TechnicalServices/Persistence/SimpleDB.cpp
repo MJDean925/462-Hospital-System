@@ -3,9 +3,9 @@
 #include <memory>
 #include <ctime>
 
-#include "TechnicalServices/Persistence/SimpleDB.hpp"
-#include "TechnicalServices/Logging/SimpleLogger.hpp"
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Persistence/SimpleDB.hpp"
+#include "../../TechnicalServices/Logging/SimpleLogger.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
 
 namespace TechnicalServices::Persistence
 {

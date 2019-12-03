@@ -2,13 +2,13 @@
 
 #include <memory>
 
-#include "Domain/AccountManagement/AccountManagementHandler.hpp"
-#include "Domain/Records/RecordHandler.hpp"
+#include "../../Domain/AccountManagement/AccountManagementHandler.hpp"
+#include "../../Domain/Records/RecordHandler.hpp"
 
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
 
-#include "UI/UserInterfaceHandler.hpp"
+#include "../../UI/UserInterfaceHandler.hpp"
 
 namespace UI
 {

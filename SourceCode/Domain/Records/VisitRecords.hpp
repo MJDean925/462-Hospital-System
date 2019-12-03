@@ -5,11 +5,11 @@
 #include <string>
 #include <ctime>
 
-#include "Domain/Records/RecordHandler.hpp"
-#include "Domain/Prescriptions/PrescriptionHandler.hpp"
+#include "../../Domain/Records/RecordHandler.hpp"
+#include "../../Domain/Prescriptions/PrescriptionHandler.hpp"
 
-#include "TechnicalServices/Logging/LoggerHandler.hpp"
-#include "TechnicalServices/Persistence/PersistenceHandler.hpp"
+#include "../../TechnicalServices/Logging/LoggerHandler.hpp"
+#include "../../TechnicalServices/Persistence/PersistenceHandler.hpp"
 
 namespace Domain::Records{
     class VisitRecords : public Domain::Records::RecordHandler{
